@@ -15,9 +15,12 @@ INSTALLED_APPS = [
     'apps.users.apps.UsersConfig',
     "apps.products.apps.ProductsConfig",
     'drf_spectacular',
+    "corsheaders",
 ]
 
 MIDDLEWARE = [
+    "corsheaders.middleware.CorsMiddleware",
+    "django.middleware.common.CommonMiddleware",
     "django.middleware.security.SecurityMiddleware",
     "django.contrib.sessions.middleware.SessionMiddleware",
     "django.middleware.common.CommonMiddleware",
@@ -93,3 +96,12 @@ SPECTACULAR_SETTINGS = {
     'SERVE_INCLUDE_SCHEMA': False,
     # OTHER SETTINGS
 }
+
+CORS_ALLOWED_ORIGINS = [
+    "http://localhost:5173",
+    "http://localhost:3000",
+    "http://frontend-deploy.com",
+    "https://frontend-deploy.com",
+]
+
+CORS_ALLOW_CREDENTIALS = True
