@@ -15,16 +15,16 @@ SECRET_KEY = os.getenv('SECRET_KEY', get_random_secret_key())
 # SECURITY WARNING: don't run with debug turned on in production!
 DEBUG = True
 
-ALLOWED_HOSTS = []
+ALLOWED_HOSTS = ENV['ALLOWED_HOSTS'].split(', ')
 
 DATABASES = {
     "default": {
         "ENGINE": "django.db.backends.postgresql",
-        "HOST": os.getenv('POSTGRES_HOST'),
-        "NAME": os.getenv('POSTGRES_DBNAME'),
-        "USER": os.getenv('POSTGRES_USER'),
-        "PASSWORD": os.getenv('POSTGRES_PASSWORD'),
-        "PORT": os.getenv('POSTGRES_PORT'),
+        "HOST": os.getenv('POSTGRES_HOST', 'localhost'),
+        "NAME": os.getenv('POSTGRES_DBNAME', 'oz_practice'),
+        "USER": os.getenv('POSTGRES_USER', 'pregres'),
+        "PASSWORD": os.getenv('POSTGRES_PASSWORD', '0000'),
+        "PORT": os.getenv('POSTGRES_PORT', '5432'),
     }
 }
 
